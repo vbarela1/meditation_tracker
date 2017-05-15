@@ -1,14 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Meditation from './Meditation';
 
 const Meditations = ({ meditations }) => (
   <ul>
     { meditations.map( (t) => {
-      return (
-        <li key={t.id}>
-          {t.name}
-        </li>
-      )
+      return ( <Meditation key={t.id} {...t} />
     })
   }
   </ul>
