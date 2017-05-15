@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const MeditationForm = ({ dispatch }) => {
+const MeditationForm = ({ dispatch, nextId }) => {
  let input;
 
  return (
@@ -20,4 +20,8 @@ const MeditationForm = ({ dispatch }) => {
   )
 }
 
-export default connect()(MeditationForm);
+const mapStateToProps = (state) => {
+  return { nextId: state.nextId }
+}
+
+export default connect(mapStateToProps)(MeditationForm);

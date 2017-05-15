@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 
 const Meditations = ({ meditations }) => (
   <ul>
-    { meditations.map( (t,i) => {
+    { meditations.map( (t) => {
       return (
-        <li key={i}>
-          {t}
+        <li key={t.id}>
+          {t.name}
         </li>
       )
     })
