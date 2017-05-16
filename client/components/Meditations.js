@@ -2,9 +2,19 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Meditation from './Meditation';
 
-const Meditations = ({ meditations }) => (
+const filtered = (todos, filter) => {
+  switch (filter) {
+    case 'All':
+      return meditations;
+    case 'Active':
+      return meditations.filter( t => !t.complete)
+    case 'Completed':
+      return meditations.filter( t => t.complete)
+  }
+}
+const Meditations = ({ meditations, filter }) => (
   <ul>
-    { meditations.map( (t) => {
+    { filtered(meditations, filter).map( (t) => {
       return ( <Meditation key={t.id} {...t} />
     })
   }
@@ -12,7 +22,7 @@ const Meditations = ({ meditations }) => (
 )
 
 const mapStateToProps = (state) => {
-  return { meditations: state.meditations }
+  return { meditations: state.meditations, filter: state.filter }
 }
 
 export default connect(mapStateToProps)(Meditations)
